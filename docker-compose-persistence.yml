@@ -13,8 +13,8 @@ version: "2.1"
     ports:
       - "3306:3306"
     volumes:
-      - ./volume/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./volume/mysql/data:/var/lib/mysql
+      - ./volume/mysql/script/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./volume/mysql:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "-uroot", "-proot",  "ping", "-h", "localhost"]
       interval: 20s
