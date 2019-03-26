@@ -1,0 +1,4 @@
+rootProject.name = 'kanban-reivew'
+include 'kanban-app'
+include 'kanban-domain'
+
