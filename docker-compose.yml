@@ -2,7 +2,7 @@ version: "2.1"
 services:
   app:
     build: kanban-app
-    image: devstream/kanaban/app:latest
+    image: devstream/kanban/app:latest
     environment:
       - SPRING_PROFILE=production
       - JVM_MEMORY=-Xmx4g -Xms4g -XX:MetaspaceSize=200m
@@ -16,7 +16,7 @@ services:
 
   web:
     build: kanban-web
-    image: devstream/kanaban/web:latest
+    image: devstream/kanban/web:latest
     ports:
       - 8081:8081
     healthcheck:
