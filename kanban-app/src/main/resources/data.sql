@@ -1,0 +1,2 @@
+-- ONLY H2
+-- INSERT QUERY

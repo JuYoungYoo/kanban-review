@@ -5,7 +5,7 @@ jdk:
 
 branches:
   only:
-#    - [ input deploy branchs ]
+    - master
 
 cache:
   directories:
@@ -15,4 +15,4 @@ cache:
 script: "./gradlew clean build"
 
 notifications:
-#  webhooks: [ input telegram url ]
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify

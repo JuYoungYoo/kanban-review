@@ -1,0 +1,16 @@
+server:
+  tomcat:
+    max-connections: 8192
+    max-threads: 200
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/kanban?verifyServerCertificate=false&useSSL=false
+    username: mysql
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+
+logging:
+  level: info
+
+debug: false

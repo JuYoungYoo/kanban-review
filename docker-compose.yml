@@ -8,22 +8,24 @@ services:
       - JVM_MEMORY=-Xmx4g -Xms4g -XX:MetaspaceSize=200m
     ports:
       - 8080:8080
+    volumes:
+      - ./volume/logs/app:/prod/logs/bootapp
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/api/healthcheck"]
       interval: 30s
       timeout: 60s
       retries: 15
 
-  web:
-    build: kanban-web
-    image: devstream/kanban/web:latest
-    ports:
-      - 8081:8081
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8081/healthcheck"]
-      interval: 30s
-      timeout: 60s
-      retries: 15
+#  web:
+#    build: kanban-web
+#    image: devstream/kanban/web:latest
+#    ports:
+#      - 8081:8081
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:8081/healthcheck"]
+#      interval: 30s
+#      timeout: 60s
+#      retries: 15
 
   nginx:
     build: kanban-nginx
@@ -33,9 +35,11 @@ services:
       - 443:443
     links:
       - app:app
-      - web:web
+#      - web:web
+    volumes:
+      - ./volume/logs/nginx:/prod/logs/nginx
     depends_on:
       app:
         condition: service_healthy
-      web:
-        condition: service_healthy
+#      web:
+#        condition: service_healthy
