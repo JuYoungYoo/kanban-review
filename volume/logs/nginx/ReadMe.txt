@@ -1,1 +1,0 @@
-this directory includes dailly lolling nginx logs.

@@ -1,7 +1,7 @@
 spring:
   h2:
     console:
-      path: h2-console
+      path: /h2-console
       enabled: true
   datasource:
     platform: h2
@@ -14,3 +14,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG

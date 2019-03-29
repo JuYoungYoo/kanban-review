@@ -20,19 +20,17 @@ git pull https://github.com/dev-stream/kanban-review.git
 ./gradlew clean build
 
 # check test reports
-# TODO
+# - Travis.CI complete
 
 
-## 3. Back docker images and push - (with docker hub)
+## 3. Back docker images and push
 # bake docker images
-# TODO
+docker build -t devstream/kanban/app:latest kanban-app
+#docker build -t devstream/kanban/web:latest twitter-web
+docker build -t devstream/kanban/nginx:latest kanban-nginx
 
-# upload docker images
+# upload docker images ( Docker Hub )
 # TODO
 
 # pull & run docker compose
-# TODO
-
-## 4. insteand of processing - (3) , build and up
-docker-compose build -d
 docker-compose up -d

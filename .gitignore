@@ -26,3 +26,12 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+
+### Persistence ###
+!/volume/logs/*
+!/volume/mysql/script/init.sql
+/volume/mysql/*
+
+##logs###
+*.log

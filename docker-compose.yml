@@ -1,5 +1,26 @@
 version: "2.1"
 services:
+  mysql:
+    image: mysql:5.6
+    container_name: mysql
+    command: --lower_case_table_names=1
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DATABASE=kanban
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./volume/mysql/script/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./volume/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-proot",  "ping", "-h", "localhost"]
+      interval: 20s
+      timeout: 3s
+      retries: 5
+
   app:
     build: kanban-app
     image: devstream/kanban/app:latest
@@ -12,9 +33,12 @@ services:
       - ./volume/logs/app:/prod/logs/bootapp
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/api/healthcheck"]
-      interval: 30s
+      interval: 15s
       timeout: 60s
       retries: 15
+    depends_on:
+      mysql:
+        condition: service_healthy
 
 #  web:
 #    build: kanban-web
@@ -31,7 +55,7 @@ services:
     build: kanban-nginx
     image: devstream/kanban/nginx:latest
     ports:
-      - 80:80
+      - 8000:80
       - 443:443
     links:
       - app:app

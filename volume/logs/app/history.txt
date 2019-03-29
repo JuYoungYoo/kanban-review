@@ -1,0 +1,11 @@
+
+
+======== (2019.03.29)
+structures : nginx + domain + app
+CI : docker + travis
+
+
+TODO
+web : npm + react
+api : github api  + ...
+
