@@ -10,6 +10,9 @@ services:
       - 8080:8080
     volumes:
       - ./volume/logs/app:/prod/logs/bootapp
+    external_links:
+      - mysql
+    network_mode: bridge
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/api/healthcheck"]
       interval: 15s
